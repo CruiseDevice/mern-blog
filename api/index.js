@@ -58,7 +58,10 @@ app.post('/login', async (req, res) => {
 
     // Generate JWT
     const token = jwt.sign({id: user._id}, secret, {expiresIn: '1h'});
-    res.cookie('token', token).json('ok');
+    res.cookie('token', token).json({
+      id: user._id,
+      username,
+    });
   } catch (e) {
     console.log(e);
     res.status(500).json({

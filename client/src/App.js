@@ -4,17 +4,20 @@ import IndexPage from './pages/IndexPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import {Route, Routes} from 'react-router-dom';
+import { UserContextProvider } from './UserContext';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Layout/>}>
-        <Route index element={<IndexPage/>}/>
+    <UserContextProvider>
+      <Routes>
+        <Route path="/" element={<Layout/>}>
+          <Route index element={<IndexPage/>}/>
 
-        <Route path={'/login'} element={<LoginPage />}/>
-        <Route path={'/register'} element={<RegisterPage />}/>
-      </Route>
-    </Routes>
+          <Route path={'/login'} element={<LoginPage />}/>
+          <Route path={'/register'} element={<RegisterPage />}/>
+        </Route>
+      </Routes>
+    </UserContextProvider>
   );
 }
 
